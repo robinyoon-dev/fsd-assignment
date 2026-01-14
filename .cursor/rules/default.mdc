@@ -1,0 +1,79 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+# React + Vite + TypeScript Cursor Rules
+
+You are an expert in TypeScript, React (Functional Components), Vite, TanStack Query, and Tailwind CSS.
+
+## Code Style and Structure
+- Write concise, technical TypeScript code with accurate examples.
+- Use functional and declarative programming patterns; avoid classes.
+- Prefer iteration and modularization over code duplication.
+- Use descriptive variable names with auxiliary verbs (e.g., isLoading, hasError).
+- Structure files: exported component, subcomponents, helpers, static content, types.
+
+## Naming Conventions
+- Use lowercase with dashes for directories (e.g., components/auth-wizard).
+- Favor named exports for components.
+
+## TypeScript Usage
+- Use TypeScript for all code; prefer interfaces over types.
+- Use functional components with TypeScript interfaces and typed props.
+- Avoid `any`; define proper generics/types for API responses and query keys.
+
+## Syntax and Formatting
+- Use the "function" keyword for pure functions.
+- Avoid unnecessary curly braces in conditionals; use concise syntax for simple statements.
+- Use declarative JSX.
+
+## State and Data Fetching (TanStack Query)
+- Use TanStack Query for server state: queries, mutations, caching, retries, and invalidation.
+- Prefer stable `queryKey` definitions and extracted query options.
+- Handle loading/error/empty states explicitly in UI.
+- Keep API clients isolated from UI; no fetch logic inside presentational components.
+
+## UI and Styling
+- Use Tailwind CSS for styling.
+- Implement responsive design with Tailwind CSS; mobile-first, and ensure desktop experience is equally solid across breakpoints.
+- Keep UI components reusable and presentational where possible.
+
+## Performance Optimization (React + Vite)
+- Minimize unnecessary re-renders; split components by responsibility.
+- Use dynamic import (`React.lazy`) for heavy/non-critical chunks when appropriate.
+- Optimize images: use WebP/AVIF when possible, include size data, implement lazy loading.
+
+## Directory Structure (Feature-Sliced Design: FSD)
+- Follow Feature-Sliced Design layers:
+  - app: app initialization, providers, routing setup
+  - processes: multi-step flows spanning multiple features (if needed)
+  - pages: route-level composition (screens)
+  - widgets: large UI blocks combining features/entities
+  - features: user interactions and business features (e.g., search-place, manage-favorites)
+  - entities: domain models and entity UI (e.g., weather, location)
+  - shared: reusable UI kit, lib, api, config, assets, types
+- Enforce dependency direction: shared → entities → features → widgets → pages → app.
+- Keep TanStack Query client setup/providers in `app` (or `shared` if truly generic).
+- Place API clients and request functions in `shared/api` or `entities/<entity>/api` (choose one and be consistent).
+- Keep UI-only components in `shared/ui`, domain-specific UI in `entities/*/ui`, feature UI in `features/*/ui`.
+
+## AI Code Assistance Guidelines
+- Provide specific requirements and context when requesting code from AI.
+- Ask for modular, reusable components that follow FSD architecture.
+- Request explanations for complex logic or patterns used in generated code.
+- Specify error handling requirements clearly (e.g., "Include comprehensive error handling").
+- Ask AI to follow TypeScript best practices with proper type definitions.
+- Request code that adheres to your established naming conventions.
+- Specify performance considerations (e.g., "Implement with memoization where appropriate").
+- Ask for responsive design implementation following Tailwind best practices.
+- Request code comments for complex logic sections.
+- Provide examples of existing code patterns you want AI to emulate.
+- Specify which libraries or dependencies to use/avoid.
+
+## Memoization
+- Use `useMemo` for expensive calculations to prevent unnecessary recalculations.
+- Apply `useCallback` for functions passed as props to child components to maintain referential equality.
+- Memoize component rendering with `React.memo()` for pure components when appropriate.
+- Avoid premature optimization - only use memoization when there's a measurable performance benefit.
+- Consider dependency arrays carefully, ensuring all dependencies are properly declared.
