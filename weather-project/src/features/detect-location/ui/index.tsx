@@ -27,6 +27,7 @@ export function DetectLocationGate({ children, fallback }: Props) {
 
     if (fallback) return <>{fallback}</>;
 
+    //TODO: UI 개선 필요 (현재 다크모드로 설정된 브라우저에서 다시 시도 버튼의 글씨가 안 보임)
     return (
       <div className="grid gap-4 rounded-xl border border-zinc-200 bg-white p-6 shadow-sm">
         <div className="grid gap-1">
